@@ -22,18 +22,14 @@
                 <p:column sortBy="#{veiculo.id}" headerText="Id">
                     <h:outputText value="#{veiculo.id}"/>
                 </p:column>
-                <p:column sortBy="#{veiculo.veiculo_id}" headerText="Veiculo_id">
-                    <h:outputText value="#{veiculo.veiculo_id}"/>
+                <p:column sortBy="#{veiculo.modelo}" headerText="Modelo">
+                    <h:outputText value="#{veiculo.modelo}"/>
                 </p:column>
-                <p:column filterBy="#{veiculo.ano}" filterMatchMode="startWith" headerText="Ano">
-                    <h:outputText value="#{veiculo.ano}">
-                        <f:convertDateTime pattern="yyyy"/>
-                    </h:outputText>
+                <p:column sortBy="#{veiculo.ano}" headerText="Ano">
+                    <h:outputText value="#{veiculo.ano}" converter="anoDate"/>
                 </p:column>
-                <p:column filterBy="#{veiculo.ano_modelo}">
-                    <h:outputText value="#{veiculo.ano_modelo}">
-                        <f:convertDateTime pattern="yyyy"/>
-                    </h:outputText>
+                <p:column sortBy="#{veiculo.anoModelo}" headerText="Ano do Modelo">
+                    <h:outputText value="#{veiculo.anoModelo}" converter="anoDate"/>
                 </p:column>
                 <p:column sortBy="#{veiculo.km}" headerText="Km">
                     <h:outputText value="#{veiculo.km}"/>
