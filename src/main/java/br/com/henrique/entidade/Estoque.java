@@ -3,7 +3,6 @@ package br.com.henrique.entidade;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "estoque")
 public class Estoque {
 
     @Id
@@ -19,25 +18,15 @@ public class Estoque {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    public void setId(Integer id) {this.id = id;}
 
-    public Produto getProduto() {
-        return produto;
-    }
+    public Produto getProduto() {return produto;}
 
-    public void setProduto(Produto produto) {
-        this.produto = produto;
-    }
+    public void setProduto(Produto produto) {this.produto = produto;}
 
-    public Integer getQuantidade() {
-        return quantidade;
-    }
+    public Integer getQuantidade() {return quantidade;}
 
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
-    }
+    public void setQuantidade(Integer quantidade) {this.quantidade = quantidade;}
 
     @Override
     public String toString() {

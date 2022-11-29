@@ -3,7 +3,6 @@ package br.com.henrique.entidade;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "modelo")
 public class Modelo {
 	
 	@Id
@@ -14,27 +13,18 @@ public class Modelo {
 	
 	private String marca;
 
-	public Integer getId(Integer integer) {
-		return id;
-	}
+	@Override
+	public String toString() {return String.format("%s-%s", marca, nome);}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+	public Integer getId() {return id;}
 
-	public String getNome() {
-		return nome;
-	}
+	public void setId(Integer id) {this.id = id;}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+	public String getNome() {return nome;}
 
-	public String getMarca() {
-		return marca;
-	}
+	public void setNome(String nome) {this.nome = nome;}
 
-	public void setMarca(String marca) {
-		this.marca = marca;
-	}
+	public String getMarca() {return marca;}
+
+	public void setMarca(String marca) {this.marca = marca;}
 }

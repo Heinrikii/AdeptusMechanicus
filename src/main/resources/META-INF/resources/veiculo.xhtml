@@ -5,55 +5,56 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core">
 
-    <h:head>
-        <title> Adeptus Mecanicus</title>
-    </h:head>
-    <h:body>
-        <h:form>
-            <p:menubar>
-                <p:submenu>
-                    <p:menuitem value="Modelo" icon="pi pi-fw pi-pincel"/>
-                </p:submenu>
-            </p:menubar>
+<h:head>
+    <title> Adeptus Mecanicus</title>
+</h:head>
+<h:body>
+    <h:form>
+        <p:menubar>
+            <p:submenu>
+                <p:menuitem value="Modelo" icon="pi pi-fw pi-pincel"/>
+            </p:submenu>
+        </p:menubar>
 
-            <p:commandButton value="Novo" type="button" icon="pi pi-external-link" onclick="PF('formulario').show()"/>
+        <p:commandButton value="Novo" type="button" icon="pi pi-external-link" onclick="PF('formulario').show()"/>
 
-            <p:dataTable var="veiculo" value="#{veiculoController.veiculos}" allowUnsorting="true" sortMode="single">
-                <p:column sortBy="#{veiculo.id}" headerText="Id">
-                    <h:outputText value="#{veiculo.id}"/>
-                </p:column>
-                <p:column sortBy="#{veiculo.modelo}" headerText="Modelo">
-                    <h:outputText value="#{veiculo.modelo}"/>
-                </p:column>
-                <p:column sortBy="#{veiculo.ano}" headerText="Ano">
-                    <h:outputText value="#{veiculo.ano}" converter="anoDate"/>
-                </p:column>
-                <p:column sortBy="#{veiculo.anoModelo}" headerText="Ano do Modelo">
-                    <h:outputText value="#{veiculo.anoModelo}" converter="anoDate"/>
-                </p:column>
-                <p:column sortBy="#{veiculo.km}" headerText="Km">
-                    <h:outputText value="#{veiculo.km}"/>
-                </p:column>
-                <p:column sortBy="#{veiculo.placa}" headerText="Placa">
-                    <h:outputText value="#{veiculo.placa}"/>
-                </p:column>
-            </p:dataTable>
+        <p:dataTable var="veiculo" value="#{veiculoController.veiculos}" allowUnsorting="true" sortMode="single">
+            <p:column sortBy="#{veiculo.id}" headerText="Id">
+                <h:outputText value="#{veiculo.id}"/>
+            </p:column>
+            <p:column sortBy="#{veiculo.modelo}" headerText="Modelo">
+                <h:outputText value="#{veiculo.modelo}"/>
+            </p:column>
+            <p:column sortBy="#{veiculo.ano}" headerText="Ano">
+                <h:outputText value="#{veiculo.ano}"/>
+            </p:column>
+            <p:column sortBy="#{veiculo.anoModelo}" headerText="Ano do Modelo">
+                <h:outputText value="#{veiculo.anoModelo}"/>
+            </p:column>
+            <p:column sortBy="#{veiculo.km}" headerText="Km">
+                <h:outputText value="#{veiculo.km}"/>
+            </p:column>
+            <p:column sortBy="#{veiculo.placa}" headerText="Placa">
+                <h:outputText value="#{veiculo.placa}"/>
+            </p:column>
+        </p:dataTable>
 
-            <p:dialog header="Veiculo" widgetVar="formulario" minHeight="40" showEffect="fade">
-                <p:panelGrid columns="2">
-                    <h:outputText value="Ano:"/>
+        <p:dialog header="Veiculo" widgetVar="formulario" minHeight="40" showEffect="fade">
+            <p:panelGrid columns="2">
+                <h:outputText value="Modelo"/>
+                    <p:inputText value="#{veiculoController.veiculo.modelo}"/>
+                <h:outputText value="Ano:"/>
                     <p:inputText value="#{veiculoController.veiculo.ano}"/>
-                    <h:outputText value="Ano do Modelo:"/>
-                    <p:inputText value="#{veiculoController.veiculo.ano_modelo}"/>
-                    <h:outputText value="Km:"/>
+                <h:outputText value="Ano do Modelo:"/>
+                    <p:inputText value="#{veiculoController.veiculo.anoModelo}"/>
+                <h:outputText value="Km:"/>
                     <p:inputText value="#{veiculoController.veiculo.km}"/>
-                    <h:outputText value="Placa:"/>
+                <h:outputText value="Placa:"/>
                     <p:inputText value="#{veiculoController.veiculo.placa}"/>
-                </p:panelGrid>
+            </p:panelGrid>
+            <p:commandButton value="Salvar" action="#{veiculoController.salvar}" onclick="PF('formulario').close()"/>
 
-                <p:commandButton value="Salvar" action="#{veiculoController.salvar}" onclick="PF('formulario').close()"/>
-
-            </p:dialog>
-        </h:form>
-    </h:body>
+        </p:dialog>
+    </h:form>
+</h:body>
 </html>

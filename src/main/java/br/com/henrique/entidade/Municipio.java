@@ -3,7 +3,6 @@ package br.com.henrique.entidade;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "municipio")
 public class Municipio {
     @Id
     private Integer id;
@@ -19,31 +18,17 @@ public class Municipio {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    public void setId(Integer id) {this.id = id;}
 
-    public String getNome() {
-        return nome;
-    }
+    public String getNome() {return nome;}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    public void setNome(String nome) {this.nome = nome;}
 
-    public EnumUf getUf() {
-        return uf;
-    }
+    public EnumUf getUf() {return uf;}
 
-    public void setUf(EnumUf uf) {
-        this.uf = uf;
-    }
+    public void setUf(EnumUf uf) {this.uf = uf;}
 
-    public Integer getCodigoIbge() {
-        return codigoIbge;
-    }
+    public Integer getCodigoIbge() {return codigoIbge;}
 
-    public void setCodigoIbge(Integer codigoIbge) {
-        this.codigoIbge = codigoIbge;
-    }
+    public void setCodigoIbge(Integer codigoIbge) {this.codigoIbge = codigoIbge;}
 }

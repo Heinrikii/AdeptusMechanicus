@@ -1,9 +1,10 @@
 package br.com.henrique.entidade;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "pessoa")
 public class Pessoa {
 
     @Id

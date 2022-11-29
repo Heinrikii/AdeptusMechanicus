@@ -5,7 +5,6 @@ import java.math.BigDecimal;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "servico")
 public class Servico {
 	
 	@Id

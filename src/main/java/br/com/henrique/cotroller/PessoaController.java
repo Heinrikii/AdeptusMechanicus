@@ -29,6 +29,7 @@ public class PessoaController {
     public void salvar(){
         pessoaDao.save(pessoa);
         pessoa = new Pessoa();
+        listar();
     }
 
     public void listar(){

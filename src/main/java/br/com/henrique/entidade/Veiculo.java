@@ -4,21 +4,21 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "veiculo")
 public class Veiculo {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne
     private Modelo modelo;
-
-    @Temporal(TemporalType.DATE)
-    private Date ano;
-    @Temporal(TemporalType.DATE)
-    private Date anoModelo;
+    private Integer ano;
+    private Integer anoModelo;
     private Integer km;
     private String placa;
+
+    @Override
+    public String toString() {
+        return String.format("%s %d %d Km", modelo, ano, km);
+    }
 
     public Integer getId() {
         return id;
@@ -36,19 +36,19 @@ public class Veiculo {
         this.modelo = modelo;
     }
 
-    public Date getAno() {
+    public Integer getAno() {
         return ano;
     }
 
-    public void setAno(Date ano) {
+    public void setAno(Integer ano) {
         this.ano = ano;
     }
 
-    public Date getAnoModelo() {
+    public Integer getAnoModelo() {
         return anoModelo;
     }
 
-    public void setAnoModelo(Date anoModelo) {
+    public void setAnoModelo(Integer anoModelo) {
         this.anoModelo = anoModelo;
     }
 
@@ -66,12 +66,5 @@ public class Veiculo {
 
     public void setPlaca(String placa) {
         this.placa = placa;
-    }
-
-    @Override
-    public String toString() {
-        return "Veiculo{" +
-                "id=" + id +
-                '}';
     }
 }

@@ -23,7 +23,7 @@
                 <h:outputText value="#{produto.nome}"/>
             </p:column>
             <p:column sortBy="#{produto.precoVenda}" headerText="Preço de Venda">
-                <h:outputText value="#{modelo.precoVenda}"/>
+                <h:outputText value="#{produto.precoVenda}"/>
             </p:column>
             <p:column headerText="">
                 <p:commandButton icon="pi pi-user-edit" update="form:produtoDiag" action="#{produtoController.setProduto(produto)}" onclick="PF('formulario').show()" value="Editar"/>
