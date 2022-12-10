@@ -1,4 +1,4 @@
-package br.com.henrique.cotroller;
+package br.com.henrique.controller;
 
 import br.com.henrique.dao.VeiculoDao;
 import br.com.henrique.entidade.Veiculo;
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.SessionScoped;
+import javax.persistence.ManyToOne;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class VeiculoController {
     @Autowired
     private VeiculoDao veiculoDao;
     private Veiculo veiculo = new Veiculo();
+    @ManyToOne
     private List veiculos = new ArrayList<>();
 
     @PostConstruct

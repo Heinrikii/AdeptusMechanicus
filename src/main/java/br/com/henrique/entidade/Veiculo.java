@@ -4,11 +4,13 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name = "veiculo")
 public class Veiculo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "modelo_id")
     private Modelo modelo;
     private Integer ano;
     private Integer anoModelo;

@@ -16,7 +16,7 @@
         <p:commandButton value="Novo" type="button" icon="pi pi-external-link" onclick="PF('formulario').show()"/>
 
         <p:dataTable id="lista" var="pessoa" value="#{pessoaController.pessoas}" allowUnsorting="true" sortMode="single">
-            <p:column sortBy="#{pessoa.id}" headerText="Id">
+            <p:column sortBy="#{pessoa.id }" headerText="Id">
                 <h:outputText value="#{pessoa.id}"/>
             </p:column>
             <p:column sortBy="#{pessoa.nome}" headerText="Nome">

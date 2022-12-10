@@ -1,10 +1,9 @@
-package br.com.henrique.cotroller;
+package br.com.henrique.controller;
 
 import br.com.henrique.dao.ProdutoDao;
 import br.com.henrique.entidade.Produto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import javax.annotation.PostConstruct;
 import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;

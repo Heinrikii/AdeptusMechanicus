@@ -1,4 +1,4 @@
-package br.com.henrique.cotroller;
+package br.com.henrique.controller;
 
 import br.com.henrique.dao.OrdemServicoProdutoDao;
 import br.com.henrique.entidade.OrdemServicoProduto;

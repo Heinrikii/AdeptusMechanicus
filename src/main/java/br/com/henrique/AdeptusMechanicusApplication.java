@@ -59,6 +59,7 @@ public class AdeptusMechanicusApplication implements ServletContextInitializer {
 			Application app = factory.getApplication();
 
 			app.addELResolver(new SpringBeanFacesELResolver());
+			app.addConverter("converter", "br.com.henrique.controller.GenericConverter");
 		}
 	}
 }

@@ -11,7 +11,7 @@ public class Municipio {
 
     @Enumerated(EnumType.STRING)
     private EnumUf uf;
-
+    @Column(name = "codigo_ibge")
     private Integer codigoIbge;
 
     public Integer getId() {

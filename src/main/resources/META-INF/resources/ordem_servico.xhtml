@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+    <title>Oficinaço - Ordem de Serviço</title>
+</h:head>
+<h:body>
+	<h:form id="form">
+	
+        <ui:include src="menu.xhtml" />	
+        
+        <p:panelGrid columns="7" layout="grid" columnClasses="ui-grid-col-1,ui-grid-col-3,ui-grid-col-1,ui-grid-col-3,ui-grid-col-1,ui-grid-col-1,ui-grid-col-2">
+        	
+        	<h:outputText value="Cliente"/>
+        	<p:autoComplete id="cliente" value="#{ordemServicoControl.ordemServico.cliente}" style="width: 100%"
+                                completeMethod="#{ordemServicoControl.completePessoa}"
+                                var="pessoa" itemLabel="#{pessoa.nome}" itemValue="#{pessoa}" converter="converter" forceSelection="true" scrollHeight="250"/>
+        
+        	<h:outputText value="Funcionário"/>
+        	<p:autoComplete id="funcionario" value="#{ordemServicoControl.ordemServico.funcionario}" style="width: 100%"
+                                completeMethod="#{ordemServicoControl.completeFuncionario}"
+                                var="func" itemLabel="#{func.nome}" itemValue="#{func}" converter="converter" forceSelection="true" scrollHeight="250"/>
+                                
+			<h:outputText value="Placa"/>
+			<p:inputMask value="#{ordemServicoControl.placa}" style="width:100%" mask="aaa-9*99">
+				<p:ajax event="blur" update="form:veiculo" listener="#{ordemServicoControl.atualizarVeiculo}"/>
+			</p:inputMask>
+			<h:outputText id="veiculo" value="#{ordemServicoControl.ordemServico.veiculo}"/>                                
+        </p:panelGrid>
+
+
+        <p:panelGrid columns="5" layout="grid">
+        	<h:outputText value="Serviço"/>
+        	<p:autoComplete id="servico" value="#{ordemServicoControl.ordemServicoServico.servico}" style="width: 100%"
+                                completeMethod="#{ordemServicoControl.completeServico}"
+                                var="servico" itemLabel="#{servico.nome}" itemValue="#{servico}"
+							converter="converter" forceSelection="true" scrollHeight="250">
+
+			</p:autoComplete>                                
+        	<h:outputText value="Quantidade"/>
+        	<p:inputText value="#{ordemServicoControl.ordemServicoServico.quantidade}"/>
+        	<p:commandButton value="Add" action="#{ordemServicoControl.addServico}" update="form"/>
+        
+        </p:panelGrid>
+        
+        <p:dataTable value="#{ordemServicoControl.ordemServico.servicos}" var="servico">
+			<p:column sortBy="#{servico.servico.nome}" headerText="Id">
+				<h:outputText value="#{servico.servico.nome}"/>
+			</p:column>        
+			<p:column sortBy="#{servico.preco}" headerText="Preco">
+				<h:outputText value="#{servico.preco}"/>
+			</p:column>        
+			<p:column sortBy="#{servico.quantidade}" headerText="Quantidade">
+				<h:outputText value="#{servico.quantidade}"/>
+			</p:column>        
+			<p:column footerText="#{ordemServicoControl.ordemServico.totalServicos}" headerText="Total">
+				<h:outputText value="#{servico.total}"/>
+			</p:column>
+			        
+        </p:dataTable>
+
+
+		<p:panelGrid columns="5" layout="grid">
+			<h:outputText value="Produto"/>
+			<p:autoComplete id="produto" value="#{ordemServicoControl.ordemServicoProduto.produto}" style="width: 100%"
+							completeMethod="#{ordemServicoControl.completeProduto}"
+							var="produto" itemLabel="#{produto.nome}" itemValue="#{produto}"
+							converter="converter" forceSelection="true" scrollHeight="250">
+
+			</p:autoComplete>
+			<h:outputText value="Quantidade"/>
+			<p:inputText value="#{ordemServicoControl.ordemServicoProduto.quantidade}"/>
+			<p:commandButton value="Add" action="#{ordemServicoControl.addProduto}" update="form"/>
+
+		</p:panelGrid>
+
+		<p:dataTable value="#{ordemServicoControl.ordemServico.produtos}" var="produto">
+			<p:column sortBy="#{servico.produto.nome}" headerText="Id">
+				<h:outputText value="#{servico.produto.nome}"/>
+			</p:column>
+			<p:column sortBy="#{produto.preco}" headerText="Preco">
+				<h:outputText value="#{produto.preco}"/>
+			</p:column>
+			<p:column sortBy="#{produto.quantidade}" headerText="Quantidade">
+				<h:outputText value="#{produto.quantidade}"/>
+			</p:column>
+			<p:column footerText="#{ordemServicoControl.ordemServico.totalProdutos}" headerText="Total">
+				<h:outputText value="#{produto.total}"/>
+			</p:column>
+
+		</p:dataTable>
+
+		<p:panelGrid columns="1" layout="grid">
+
+			<h:outputText value="Desconto: "/>
+			<p:inputText value="#{ordemServicoControl.ordemServico.desconto}">
+				<p:ajax event="blur" update="form"/>
+			</p:inputText>
+
+			<h:outputText value="Total: "/>
+			<h:outputText value="#{ordemServicoControl.ordemServico.total}"/>
+
+			<p:commandButton value="Salvar" action="#{ordemServicoControl.salvar()}" update="form"/>
+		</p:panelGrid>
+    </h:form>
+</h:body>
+
+</html>        

@@ -1,4 +1,4 @@
-package br.com.henrique.cotroller;
+package br.com.henrique.controller;
 
 import br.com.henrique.dao.MunicipioDao;
 import br.com.henrique.entidade.Municipio;
@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 import java.util.List;

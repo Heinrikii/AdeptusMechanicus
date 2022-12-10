@@ -1,15 +1,17 @@
 package br.com.henrique.entidade;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.*;
 
 @Entity
-public class Produto {
+public class Produto{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
+
 	private BigDecimal precoVenda;
 	public Integer getId() {
 		return id;

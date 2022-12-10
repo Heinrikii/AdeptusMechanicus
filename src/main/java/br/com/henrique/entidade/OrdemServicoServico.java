@@ -1,7 +1,14 @@
 package br.com.henrique.entidade;
 
-import javax.persistence.*;
+import br.com.henrique.entidade.Servico;
+
 import java.math.BigDecimal;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class OrdemServicoServico {
@@ -17,7 +24,7 @@ public class OrdemServicoServico {
 
     private BigDecimal preco;
 
-    public BigDecimal getTotal(){
+    public BigDecimal getTotal() {
         return BigDecimal.valueOf(preco.doubleValue() * quantidade);
     }
 
@@ -52,4 +59,6 @@ public class OrdemServicoServico {
     public void setPreco(BigDecimal preco) {
         this.preco = preco;
     }
+
+
 }

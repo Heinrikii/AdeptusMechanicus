@@ -1,10 +1,16 @@
 package br.com.henrique.entidade;
 
-import javax.persistence.*;
+import br.com.henrique.entidade.OrdemServicoProduto;
+import br.com.henrique.entidade.OrdemServicoServico;
+import br.com.henrique.entidade.Pessoa;
+import br.com.henrique.entidade.Veiculo;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.*;
 
 @Entity
 public class OrdemServico {
@@ -22,13 +28,13 @@ public class OrdemServico {
     @ManyToOne(optional = false)
     private Veiculo veiculo;
 
-    @OneToMany
-    @JoinColumn(name="ordem_servico_id")
-    private List<OrdemServicoProduto> produtos = new ArrayList<>();
-
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="ordem_servico_id")
     private List<OrdemServicoServico> servicos = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="ordem_servico_id")
+    private List<OrdemServicoProduto> produtos = new ArrayList<>();
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date data;
@@ -48,14 +54,26 @@ public class OrdemServico {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataEntrega;
 
-    private BigDecimal desconto;
+    private BigDecimal desconto = BigDecimal.ZERO;
 
-    public BigDecimal getTotalDesconto(){
+    public BigDecimal getTotalServicos() {
         BigDecimal vlr = BigDecimal.ZERO;
-        for(OrdemServicoServico oss : servicos){
+        for(OrdemServicoServico oss : servicos) {
             vlr = vlr.add(oss.getTotal());
         }
         return vlr;
+    }
+
+    public BigDecimal getTotalProdutos() {
+        BigDecimal vlr = BigDecimal.ZERO;
+        for(OrdemServicoProduto osp : produtos) {
+            vlr = vlr.add(osp.getTotal());
+        }
+        return vlr;
+    }
+
+    public BigDecimal getTotal(){
+        return getTotalProdutos().add(getTotalServicos()).subtract(getDesconto());
     }
 
     public Integer getId() {
@@ -146,11 +164,13 @@ public class OrdemServico {
         this.desconto = desconto;
     }
 
+    public List<OrdemServicoServico> getServicos() {
+        return servicos;
+    }
+
     public List<OrdemServicoProduto> getProdutos() {
         return produtos;
     }
 
-    public List<OrdemServicoServico> getServicos() {
-        return servicos;
-    }
+
 }

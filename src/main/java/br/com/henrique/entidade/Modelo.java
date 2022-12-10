@@ -1,8 +1,10 @@
 package br.com.henrique.entidade;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@Table(name = "modelo")
 public class Modelo {
 	
 	@Id
@@ -12,6 +14,11 @@ public class Modelo {
 	private String nome;
 	
 	private String marca;
+
+	@OneToMany(mappedBy = "modelo", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@Column(name = "veiculo")
+	private List<Veiculo> veiculoList;
+
 
 	@Override
 	public String toString() {return String.format("%s-%s", marca, nome);}

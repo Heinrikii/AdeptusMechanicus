@@ -12,7 +12,7 @@ import java.util.List;
 public interface PessoaDao extends JpaRepository<Pessoa, Integer> {
 
     @Query(nativeQuery = true, value = "select * from pessoa p  where lower(p.nome) like lower(:nome)")
-    List<Pessoa> listarPorNome(@Param("nome")String nome);
+    List<Pessoa> listarClientePorNome(@Param("nome")String nome);
 
     @Query(nativeQuery = true, value = "select * from pessoa p where p.funcionario and lower(p.nome) like lower(:nome)")
     List<Pessoa> listarFuncionarioPorNome(@Param("nome")String nome);

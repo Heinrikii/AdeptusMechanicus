@@ -1,4 +1,4 @@
-package br.com.henrique.cotroller;
+package br.com.henrique.controller;
 
 import br.com.henrique.dao.PessoaDao;
 import br.com.henrique.entidade.Pessoa;
@@ -56,4 +56,6 @@ public class PessoaController {
     public void setPessoas(List<Pessoa> pessoas) {
         this.pessoas = pessoas;
     }
+
+
 }

@@ -1,37 +1,29 @@
 package br.com.henrique.entidade;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-public class Estoque {
+@Table(name = "estoque")
+public class Estoque{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
-    private Produto produto;
-
     private Integer quantidade;
 
-    public Integer getId() {
-        return id;
-    }
+    public Integer getId() {return id;}
 
     public void setId(Integer id) {this.id = id;}
-
-    public Produto getProduto() {return produto;}
-
-    public void setProduto(Produto produto) {this.produto = produto;}
 
     public Integer getQuantidade() {return quantidade;}
 
     public void setQuantidade(Integer quantidade) {this.quantidade = quantidade;}
 
-    @Override
-    public String toString() {
-        return "Estoque{" +
-                "produto=" + produto +
-                '}';
-    }
+
 }
