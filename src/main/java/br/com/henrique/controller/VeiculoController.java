@@ -1,6 +1,8 @@
 package br.com.henrique.controller;
 
+import br.com.henrique.dao.ModeloDao;
 import br.com.henrique.dao.VeiculoDao;
+import br.com.henrique.entidade.Modelo;
 import br.com.henrique.entidade.Veiculo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,6 +22,8 @@ public class VeiculoController {
     private Veiculo veiculo = new Veiculo();
     @ManyToOne
     private List veiculos = new ArrayList<>();
+    @Autowired
+    private ModeloDao modeloDao;
 
     @PostConstruct
     public void init(){
@@ -41,6 +45,9 @@ public class VeiculoController {
         listar();
     }
 
+    public List<Modelo> completarModelo(String query){
+        return modeloDao.listarPorNomeModelo("%" + query + "%");
+    }
     public Veiculo getVeiculo() {
         return veiculo;
     }

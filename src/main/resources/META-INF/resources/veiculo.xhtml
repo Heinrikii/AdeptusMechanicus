@@ -6,10 +6,10 @@
       xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
-    <title> Adeptus Mecanicus</title>
+    <title>Lançamento de Servicos</title>
 </h:head>
 <h:body>
-    <h:form>
+    <h:form id="form">
         <p:menubar>
             <p:submenu>
                 <p:menuitem value="Modelo" icon="pi pi-fw pi-pincel"/>
@@ -18,7 +18,7 @@
 
         <p:commandButton value="Novo" type="button" icon="pi pi-external-link" onclick="PF('formulario').show()"/>
 
-        <p:dataTable var="veiculo" value="#{veiculoController.veiculos}" allowUnsorting="true" sortMode="single">
+        <p:dataTable id="lista" var="veiculo" value="#{veiculoController.veiculos}" allowUnsorting="true" sortMode="single">
             <p:column sortBy="#{veiculo.id}" headerText="Id">
                 <h:outputText value="#{veiculo.id}"/>
             </p:column>
@@ -37,12 +37,21 @@
             <p:column sortBy="#{veiculo.placa}" headerText="Placa">
                 <h:outputText value="#{veiculo.placa}"/>
             </p:column>
+            <p:column headerText="">
+                <p:commandButton icon="pi pi-user-edit" update="form:produtoDiag" action="#{veiculoController.setVeiculo(veiculo)}" onclick="PF('formulario').show()" value="Editar"/>
+                <p:commandButton icon="pi pi-trash" update="form:lista" action="#{veiculoController.excluir(veiculo.id)}" style="margin-left: 10px;" value="Excluir"/>
+            </p:column>
         </p:dataTable>
 
         <p:dialog header="Veiculo" widgetVar="formulario" minHeight="40" showEffect="fade">
-            <p:panelGrid columns="2">
+            <p:panelGrid id="produtoDiag" columns="2">
                 <h:outputText value="Modelo"/>
-                    <p:inputText value="#{veiculoController.veiculo.modelo}"/>
+                <p:autoComplete id="modelo" value="#{veiculoController.modelo}" style="width: 100%"
+                                completeMethod="#{veiculoController.completarModelo}"
+                                var="modelo" itemLabel="#{modelo.nome}" itemValue="#{modelo}"
+                                converter="converter" forceSelection="true" scrollHeight="250">
+
+                </p:autoComplete>
                 <h:outputText value="Ano:"/>
                     <p:inputText value="#{veiculoController.veiculo.ano}"/>
                 <h:outputText value="Ano do Modelo:"/>
