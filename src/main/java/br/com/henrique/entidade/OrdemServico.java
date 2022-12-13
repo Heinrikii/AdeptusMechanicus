@@ -73,7 +73,7 @@ public class OrdemServico {
     }
 
     public BigDecimal getTotal(){
-        return getTotalProdutos().add(getTotalServicos()).subtract(getDesconto());
+        return (getTotalProdutos().add(getTotalServicos())).subtract(getDesconto());
     }
 
     public Integer getId() {
@@ -172,5 +172,11 @@ public class OrdemServico {
         return produtos;
     }
 
+    public void setServicos(List<OrdemServicoServico> servicos) {
+        this.servicos = servicos;
+    }
 
+    public void setProdutos(List<OrdemServicoProduto> produtos) {
+        this.produtos = produtos;
+    }
 }

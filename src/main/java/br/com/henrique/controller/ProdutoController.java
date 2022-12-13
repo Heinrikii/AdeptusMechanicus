@@ -12,19 +12,14 @@ import java.util.List;
 @Component
 @SessionScoped
 public class ProdutoController {
-
     @Autowired
     private ProdutoDao produtoDao;
-
     private Produto produto = new Produto();
-
     private List<Produto> produtos = new ArrayList<>();
-
     @PostConstruct
     public void init(){
         listar();
     }
-
     public void salvar(){
         produtoDao.save(produto);
         produto = new Produto();
@@ -37,6 +32,7 @@ public class ProdutoController {
 
     public void excluir(Integer id){
         produtoDao.deleteById(id);
+        listar();
     }
 
     public Produto getProduto() {
@@ -47,6 +43,14 @@ public class ProdutoController {
         this.produto = produto;
     }
 
+    public ProdutoDao getProdutoDao() {
+        return produtoDao;
+    }
+
+    public void setProdutoDao(ProdutoDao produtoDao) {
+        this.produtoDao = produtoDao;
+    }
+
     public List<Produto> getProdutos() {
         return produtos;
     }
@@ -54,4 +58,6 @@ public class ProdutoController {
     public void setProdutos(List<Produto> produtos) {
         this.produtos = produtos;
     }
+
+
 }

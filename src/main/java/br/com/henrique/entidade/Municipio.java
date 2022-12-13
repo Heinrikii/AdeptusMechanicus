@@ -3,6 +3,7 @@ package br.com.henrique.entidade;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "municipio")
 public class Municipio {
     @Id
     private Integer id;

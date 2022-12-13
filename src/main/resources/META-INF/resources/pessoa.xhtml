@@ -35,17 +35,19 @@
                 <h:outputText value="#{pessoa.telefone}"/>
             </p:column>
             <p:column sortBy="#{pessoa.whatsapp}" headerText="WhatsZap">
-                <h:outputText value="#{pessoa.whatsapp}"/>
+                <p:selectBooleanCheckbox value="pessoa.wahtszap"/>
             </p:column>
             <p:column sortBy="#{pessoa.cep}" headerText="CEP">
                 <h:outputText value="#{pessoa.cep}"/>
             </p:column>
             <p:column sortBy="#{pessoa.funicionario}" headerText="Funicionário">
-                <h:outputText value="#{pessoa.funcionario}"/>
+                <h:selectBooleanCheckbox value="#{pessoa.funcionario}"/>
             </p:column>
             <p:column headerText="">
-                <p:commandButton icon="pi pi-user-edit" update="form:modeloDiag" action="#{pessoaController.setPessoa(pessoa)}" onclick="PF('formulario').show()" value="Editar"/>
-                <p:commandButton icon="pi pi-trash" update="form:lista" action="#{pessoaController.excluir(pessoa.id)}" style="margin-left: 10px;" value="Excluir"/>
+                <p:commandButton icon="pi pi-user-edit" update="form:modeloDiag" action="#{pessoaController.setPessoa(pessoa)}"
+                                 onclick="PF('formulario').show()" value="Editar"/>
+                <p:commandButton icon="pi pi-trash" update="form:lista" action="#{pessoaController.excluir(pessoa.id)}"
+                                 style="margin-left: 10px;" value="Excluir"/>
             </p:column>
         </p:dataTable>
 

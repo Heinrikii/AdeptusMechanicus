@@ -13,12 +13,10 @@ import java.util.List;
 @Component
 @SessionScoped
 public class ModeloController {
-
     @Autowired
     private ModeloDao modeloDao;
     private Modelo modelo = new Modelo();
     private List<Modelo> modelos = new ArrayList<>();
-
     @PostConstruct
     public void init(){
         listar();
@@ -28,7 +26,6 @@ public class ModeloController {
         modelo = new Modelo();
         listar();
     }
-
     public void listar(){
         modelos = modeloDao.findAll();
     }

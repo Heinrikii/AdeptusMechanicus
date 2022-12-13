@@ -17,7 +17,7 @@ public class PessoaController {
     @Autowired
     private PessoaDao pessoaDao;
 
-    private Pessoa pessoa;
+    private Pessoa pessoa = new Pessoa();
 
     private List<Pessoa> pessoas = new ArrayList<>();
 

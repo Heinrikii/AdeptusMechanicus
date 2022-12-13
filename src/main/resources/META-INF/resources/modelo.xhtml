@@ -19,29 +19,32 @@
             <p:column sortBy="#{modelo.id}" headerText="Id">
                 <h:outputText value="#{modelo.id}"/>
             </p:column>
-            <p:column sortBy="#{modelo.nome}" headerText="Nome">
+            <p:column sortBy="#{modelo.nome}" headerText="Modelo">
                 <h:outputText value="#{modelo.nome}"/>
             </p:column>
             <p:column sortBy="#{modelo.marca}" headerText="Marca">
                 <h:outputText value="#{modelo.marca}"/>
             </p:column>
             <p:column headerText="">
-                <p:commandButton icon="pi pi-user-edit" update="form:modeloDiag" action="#{modeloController.setModelo(modelo)}" onclick="PF('formulario').show()" value="Editar"/>
-                <p:commandButton icon="pi pi-trash" update="form:lista" action="#{modeloController.excluir(modelo.id)}" style="margin-left: 10px;" value="Excluir"/>
+                <p:commandButton icon="pi pi-user-edit" update="form:modeloDiag"
+                                 action="#{modeloController.setModelo(modelo)}" onclick="PF('formulario').show()"
+                                 value="Editar"/>
+                <p:commandButton icon="pi pi-trash" update="form:lista" action="#{modeloController.excluir(modelo.id)}"
+                                 style="margin-left: 10px;" value="Excluir"/>
             </p:column>
         </p:dataTable>
 
 
-
         <p:dialog header="Modelo" widgetVar="formulario" minHeight="40" showEffect="fade" closeOnEscape="true">
             <p:panelGrid id="modeloDiag" columns="2">
-                <h:outputText value="Nome:"/>
+                <h:outputText value="Modelo:"/>
                 <p:inputText value="#{modeloController.modelo.nome}"/>
                 <h:outputText value="Marca:"/>
                 <p:inputText value="#{modeloController.modelo.marca}"/>
             </p:panelGrid>
 
-            <p:commandButton value="Salvar" action="#{modeloController.salvar}" onclick="PF('formulario').close()"/>
+            <p:commandButton value="Salvar" action="#{modeloController.salvar}" onclick="PF('formulario').close()"
+                             update="form"/>
 
         </p:dialog>
 

@@ -26,8 +26,10 @@
                 <h:outputText value="#{produto.precoVenda}"/>
             </p:column>
             <p:column headerText="">
-                <p:commandButton icon="pi pi-user-edit" update="form:produtoDiag" action="#{produtoController.setProduto(produto)}" onclick="PF('formulario').show()" value="Editar"/>
-                <p:commandButton icon="pi pi-trash" update="form:lista" action="#{produtoController.excluir(produto.id)}" style="margin-left: 10px;" value="Excluir"/>
+                <p:commandButton icon="pi pi-user-edit" update="form:produtoDiag" action="#{produtoController.setProduto(produto)}"
+                                 onclick="PF('formulario').show()" value="Editar"/>
+                <p:commandButton icon="pi pi-trash" update="form:lista" action="#{produtoController.excluir(produto.id)}"
+                                 style="margin-left: 10px;" value="Excluir"/>
             </p:column>
         </p:dataTable>
 

@@ -17,7 +17,7 @@ public class OrdemServicoProduto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Produto produto;
 
     private Integer quantidade;

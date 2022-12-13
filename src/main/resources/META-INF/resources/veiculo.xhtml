@@ -3,18 +3,15 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 <h:head>
-    <title>Lançamento de Servicos</title>
+    <title>Veiculo</title>
 </h:head>
 <h:body>
     <h:form id="form">
-        <p:menubar>
-            <p:submenu>
-                <p:menuitem value="Modelo" icon="pi pi-fw pi-pincel"/>
-            </p:submenu>
-        </p:menubar>
+
+        <ui:include src="menu.xhtml"/>
 
         <p:commandButton value="Novo" type="button" icon="pi pi-external-link" onclick="PF('formulario').show()"/>
 
@@ -38,20 +35,19 @@
                 <h:outputText value="#{veiculo.placa}"/>
             </p:column>
             <p:column headerText="">
-                <p:commandButton icon="pi pi-user-edit" update="form:produtoDiag" action="#{veiculoController.setVeiculo(veiculo)}" onclick="PF('formulario').show()" value="Editar"/>
-                <p:commandButton icon="pi pi-trash" update="form:lista" action="#{veiculoController.excluir(veiculo.id)}" style="margin-left: 10px;" value="Excluir"/>
+                <p:commandButton icon="pi pi-user-edit" update="form:veiculoDiag " action="#{veiculoController.setVeiculo(veiculo)}"
+                                 onclick="PF('formulario').show()" value="Editar"/>
+                <p:commandButton icon="pi pi-trash" update="form:lista" action="#{veiculoController.excluir(veiculo.id)}"
+                                 style="margin-left: 10px;" value="Excluir"/>
             </p:column>
         </p:dataTable>
-
         <p:dialog header="Veiculo" widgetVar="formulario" minHeight="40" showEffect="fade">
-            <p:panelGrid id="produtoDiag" columns="2">
+            <p:panelGrid id="veiculoDiag" columns="2">
                 <h:outputText value="Modelo"/>
-                <p:autoComplete id="modelo" value="#{veiculoController.modelo}" style="width: 100%"
-                                completeMethod="#{veiculoController.completarModelo}"
-                                var="modelo" itemLabel="#{modelo.nome}" itemValue="#{modelo}"
-                                converter="converter" forceSelection="true" scrollHeight="250">
-
-                </p:autoComplete>
+                    <p:autoComplete id="modelo" value="#{veiculoController.veiculo.modelo}" style="width: 100%"
+                                    completeMethod="#{veiculoController.completeModelo}"
+                                    var="modelo" itemLabel="#{modelo.nome}" itemValue="#{modelo}"
+                                    converter="converter" forceSelection="true" scrollHeight=""/>
                 <h:outputText value="Ano:"/>
                     <p:inputText value="#{veiculoController.veiculo.ano}"/>
                 <h:outputText value="Ano do Modelo:"/>
@@ -59,9 +55,9 @@
                 <h:outputText value="Km:"/>
                     <p:inputText value="#{veiculoController.veiculo.km}"/>
                 <h:outputText value="Placa:"/>
-                    <p:inputText value="#{veiculoController.veiculo.placa}"/>
+                    <p:inputMask value="#{veiculoController.veiculo.placa}" style="width: 100pix" mask="aaa-9999"/>
             </p:panelGrid>
-            <p:commandButton value="Salvar" action="#{veiculoController.salvar}" onclick="PF('formulario').close()"/>
+            <p:commandButton value="Salvar" action="#{veiculoController.salvar}" onclick="PF('formulario').close()" update="veiculoDiag"/>
 
         </p:dialog>
     </h:form>

@@ -1,9 +1,7 @@
 package br.com.henrique.entidade;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.*;
-
 @Entity
 public class Produto{
 
@@ -11,11 +9,13 @@ public class Produto{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
-
+	@Column(name = "preco_venda")
 	private BigDecimal precoVenda;
+
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}

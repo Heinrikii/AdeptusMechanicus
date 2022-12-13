@@ -1,5 +1,7 @@
 package br.com.henrique.entidade;
 
+import org.springframework.stereotype.Component;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.persistence.*;
@@ -21,11 +23,11 @@ public class Pessoa {
 
     private String telefone;
 
-    private boolean whatsapp;
+    private Boolean whatsapp;
 
     private String cep;
 
-    private boolean funcionario;
+    private Boolean funcionario;
 
     @ManyToOne
     private Municipio municipio;
@@ -78,12 +80,20 @@ public class Pessoa {
         this.telefone = telefone;
     }
 
-    public boolean isWhatsapp() {
+    public Boolean getWhatsapp() {
         return whatsapp;
     }
 
-    public void setWhatsapp(boolean whatsapp) {
+    public void setWhatsapp(Boolean whatsapp) {
         this.whatsapp = whatsapp;
+    }
+
+    public Boolean getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Boolean funcionario) {
+        this.funcionario = funcionario;
     }
 
     public String getCep() {
@@ -92,14 +102,6 @@ public class Pessoa {
 
     public void setCep(String cep) {
         this.cep = cep;
-    }
-
-    public boolean isFuncionario() {
-        return funcionario;
-    }
-
-    public void setFuncionario(boolean funcionario) {
-        this.funcionario = funcionario;
     }
 
     public Municipio getMunicipio() {

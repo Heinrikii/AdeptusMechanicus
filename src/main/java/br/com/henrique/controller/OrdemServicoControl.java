@@ -20,19 +20,7 @@ public class OrdemServicoControl {
 	private Integer funcionarioId;
 
 	@Autowired
-	private PessoaDao pessoaDao;
-
-	@Autowired
 	private VeiculoDao veiculoDao;
-
-	private String placa;
-
-	private OrdemServico ordemServico = new OrdemServico();
-
-	private OrdemServicoServico ordemServicoServico = new OrdemServicoServico();
-
-	private OrdemServicoProduto ordemServicoProduto = new OrdemServicoProduto();
-
 	@Autowired
 	private OrdemServicoDao ordemServicoDao;
 
@@ -44,6 +32,14 @@ public class OrdemServicoControl {
 
 	@Autowired
 	private ProdutoDao produtoDao;
+
+	private String placa;
+
+	private OrdemServico ordemServico = new OrdemServico();
+
+	private OrdemServicoServico ordemServicoServico = new OrdemServicoServico();
+
+	private OrdemServicoProduto ordemServicoProduto = new OrdemServicoProduto();
 
 	public void atualizarVeiculo() {
 		Veiculo veiculo = veiculoDao.consultarPorPlaca(placa);
@@ -72,9 +68,8 @@ public class OrdemServicoControl {
 		ordemServicoProduto = new OrdemServicoProduto();
 	}
 
-
 	public List<Pessoa> completePessoa(String query) {
-		List<Pessoa> result = 	pessoaDaoImpl.listarPorNome("%" + query + "%", null);
+		List<Pessoa> result = pessoaDaoImpl.listarPorNome("%" + query + "%", null);
 		return result;
 	}
 
@@ -83,10 +78,8 @@ public class OrdemServicoControl {
 	}
 
 	public List<Produto> completeProduto(String query) {
-		return produtoDao.listarPorNome("%" + query + "%");
+		return produtoDao.listarPorNomeProduto("%" + query + "%");
 	}
-
-
 
 	public List<Pessoa> completeFuncionario(String query) {
 		return pessoaDaoImpl.listarPorNome("%" + query + "%", true);
@@ -99,51 +92,39 @@ public class OrdemServicoControl {
 	public void setPessoaId(Integer pessoaId) {
 		this.pessoaId = pessoaId;
 	}
-
 	public Integer getFuncionarioId() {
 		return funcionarioId;
 	}
-
 	public void setFuncionarioId(Integer funcionarioId) {
 		this.funcionarioId = funcionarioId;
 	}
-
 	public String getPlaca() {
 		return placa;
 	}
-
 	public void setPlaca(String placa) {
 		this.placa = placa;
 	}
-
 	public OrdemServico getOrdemServico() {
 		return ordemServico;
 	}
-
 	public void setOrdemServico(OrdemServico ordemServico) {
 		this.ordemServico = ordemServico;
 	}
-
 	public Integer getServicoId() {
 		return servicoId;
 	}
-
 	public void setServicoId(Integer servicoId) {
 		this.servicoId = servicoId;
 	}
-
 	public OrdemServicoServico getOrdemServicoServico() {
 		return ordemServicoServico;
 	}
-
 	public void setOrdemServicoServico(OrdemServicoServico ordemServicoServico) {
 		this.ordemServicoServico = ordemServicoServico;
 	}
-
 	public OrdemServicoProduto getOrdemServicoProduto() {
 		return ordemServicoProduto;
 	}
-
 	public void setOrdemServicoProduto(OrdemServicoProduto ordemServicoProduto) {
 		this.ordemServicoProduto = ordemServicoProduto;
 	}

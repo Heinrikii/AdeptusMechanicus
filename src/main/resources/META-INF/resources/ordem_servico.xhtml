@@ -6,7 +6,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 <h:head>
-    <title>Oficinaço - Ordem de Serviço</title>
+    <title>Ordem Servico</title>
 </h:head>
 <h:body>
 	<h:form id="form">
@@ -18,12 +18,14 @@
         	<h:outputText value="Cliente"/>
         	<p:autoComplete id="cliente" value="#{ordemServicoControl.ordemServico.cliente}" style="width: 100%"
                                 completeMethod="#{ordemServicoControl.completePessoa}"
-                                var="pessoa" itemLabel="#{pessoa.nome}" itemValue="#{pessoa}" converter="converter" forceSelection="true" scrollHeight="250"/>
+                                var="pessoa" itemLabel="#{pessoa.nome}" itemValue="#{pessoa}"
+							converter="converter" forceSelection="true" scrollHeight="250"/>
         
         	<h:outputText value="Funcionário"/>
         	<p:autoComplete id="funcionario" value="#{ordemServicoControl.ordemServico.funcionario}" style="width: 100%"
                                 completeMethod="#{ordemServicoControl.completeFuncionario}"
-                                var="func" itemLabel="#{func.nome}" itemValue="#{func}" converter="converter" forceSelection="true" scrollHeight="250"/>
+                                var="func" itemLabel="#{func.nome}" itemValue="#{func}"
+							converter="converter" forceSelection="true" scrollHeight="250"/>
                                 
 			<h:outputText value="Placa"/>
 			<p:inputMask value="#{ordemServicoControl.placa}" style="width:100%" mask="aaa-9*99">
@@ -104,7 +106,7 @@
 			<h:outputText value="Total: "/>
 			<h:outputText value="#{ordemServicoControl.ordemServico.total}"/>
 
-			<p:commandButton value="Salvar" action="#{ordemServicoControl.salvar()}" update="form"/>
+			<p:commandButton value="Salvar" action="#{ordemServicoControl.salvar}" update="form"/>
 		</p:panelGrid>
     </h:form>
 </h:body>

@@ -20,6 +20,7 @@ public class ServicoController {
     private List<Servico> servicos = new ArrayList<>();
 
     @PostConstruct
+    public void init(){listar();}
     public void salvar(){
         servicoDao.save(servico);
         servico = new Servico();

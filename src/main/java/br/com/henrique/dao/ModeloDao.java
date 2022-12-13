@@ -12,7 +12,6 @@ import java.util.List;
 @Repository
 public interface ModeloDao extends JpaRepository<Modelo, Integer> {
 
-    @Query(nativeQuery = true, value = "select * from produto m where lower(m.nome) like lower(:nome)")
+    @Query(nativeQuery = true, value = "select * from modelo m where lower(m.nome) like lower(:nome)")
     List<Modelo> listarPorNomeModelo(@Param("nome") String nome);
-
 }

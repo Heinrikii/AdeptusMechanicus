@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.ManyToOne;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,12 +41,13 @@ public class VeiculoController {
         veiculos = veiculoDao.findAll();
     }
 
+    @Transactional(Transactional.TxType.REQUIRES_NEW)
     public void excluir(Integer id){
-        veiculoDao.deleteById(id);
+        Veiculo v = veiculoDao.findById(id).get();
+        veiculoDao.delete(v);
         listar();
     }
-
-    public List<Modelo> completarModelo(String query){
+    public List<Modelo> completeModelo(String query){
         return modeloDao.listarPorNomeModelo("%" + query + "%");
     }
     public Veiculo getVeiculo() {
@@ -63,4 +65,6 @@ public class VeiculoController {
     public void setVeiculos(List veiculos) {
         this.veiculos = veiculos;
     }
+
+
 }
