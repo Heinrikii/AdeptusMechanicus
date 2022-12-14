@@ -11,11 +11,12 @@
 <h:body>
     <h:form id="form">
 
-        <ui:include src="menu.xhtml" />
+        <ui:include src="menu.xhtml"/>
 
         <p:commandButton value="Novo" type="button" icon="pi pi-external-link" onclick="PF('formulario').show()"/>
 
-        <p:dataTable id="lista" var="modelo" value="#{modeloController.modelos}" allowUnsorting="true" sortMode="single">
+        <p:dataTable id="lista" var="modelo" value="#{modeloController.modelos}" allowUnsorting="true" sortMode="single"
+                     paginator="true" rows="10">
             <p:column sortBy="#{modelo.id}" headerText="Id">
                 <h:outputText value="#{modelo.id}"/>
             </p:column>
@@ -30,7 +31,7 @@
                                  action="#{modeloController.setModelo(modelo)}" onclick="PF('formulario').show()"
                                  value="Editar"/>
                 <p:commandButton icon="pi pi-trash" update="form:lista" action="#{modeloController.excluir(modelo.id)}"
-                                 style="margin-left: 10px;" value="Excluir"/>
+                                 style="margin-left: 15px;" value="Excluir"/>
             </p:column>
         </p:dataTable>
 
